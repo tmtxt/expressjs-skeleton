@@ -19,3 +19,14 @@
   command: sudo -iu {{user_name}} nvm install {{node_version}}
   register: nvm_install_result
   changed_when: nvm_install_result.stdout.find('is already installed.') != -1
+
+# - name: check node {{node_version}} is the default version
+#   shell: sudo -iu {{user_name}} nvm ls | grep -e 'default -> {{node_version}}'
+#   register: nvm_check_default
+#   changed_when: False
+#   ignore_errors: True
+
+- name: set node {{node_version}} as the default
+  command: sudo -iu {{user_name}} nvm alias default {{node_version}}
+  changed_when: False
+  # when: nvm_check_default|failed
