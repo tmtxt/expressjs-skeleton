@@ -1,6 +1,4 @@
 ---
 - hosts: all
-  tasks:
-    - name: update apt-get
-      apt: update_cache=yes cache_valid_time=43200 # update after 12 hours
-      sudo: yes
+  roles:
+    - apt
