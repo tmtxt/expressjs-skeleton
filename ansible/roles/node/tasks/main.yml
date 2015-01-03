@@ -7,3 +7,10 @@
     dest=~/.nvm
     update=no
     accept_hostkey=yes
+
+- name: source nvm in .profile
+  sudo: yes
+  sudo_user: "{{user_name}}"
+  lineinfile: >-
+    dest=~/.profile
+    line=". ~/.nvm/nvm.sh"
