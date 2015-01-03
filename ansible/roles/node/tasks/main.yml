@@ -15,7 +15,7 @@
     dest=~/.profile
     line=". ~/.nvm/nvm.sh"
 
-- name: install node version {{node_version}}
+- name: install nodejs using nvm
   command: sudo -iu {{user_name}} nvm install {{node_version}}
   register: nvm_install_result
   changed_when: nvm_install_result.stdout.find('is already installed.') != -1
@@ -26,7 +26,7 @@
 #   changed_when: False
 #   ignore_errors: True
 
-- name: set node {{node_version}} as the default
+- name: set default nodejs version
   command: sudo -iu {{user_name}} nvm alias default {{node_version}}
   changed_when: False
   # when: nvm_check_default|failed

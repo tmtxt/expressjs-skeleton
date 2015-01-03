@@ -1,7 +1,5 @@
 ---
 - hosts: all
-  vars:
-    user_name: skeleton
   roles:
     - apt
     - user
