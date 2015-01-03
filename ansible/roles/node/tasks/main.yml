@@ -1,7 +1,7 @@
 ---
 - name: clone nvm
   sudo: yes
-  sudo_user: "{{user_name}}"
+  sudo_user: "{{project_user}}"
   git: >-
     repo=https://github.com/creationix/nvm.git
     dest=~/.nvm
@@ -10,13 +10,13 @@
 
 - name: source nvm in .profile
   sudo: yes
-  sudo_user: "{{user_name}}"
+  sudo_user: "{{project_user}}"
   lineinfile: >-
     dest=~/.profile
     line=". ~/.nvm/nvm.sh"
 
 - name: install nodejs using nvm
-  command: sudo -iu {{user_name}} nvm install {{node_version}}
+  command: sudo -iu {{project_user}} nvm install {{node_version}}
   register: nvm_install_result
   changed_when: nvm_install_result.stdout.find('is already installed.') != -1
 
@@ -27,6 +27,6 @@
 #   ignore_errors: True
 
 - name: set default nodejs version
-  command: sudo -iu {{user_name}} nvm alias default {{node_version}}
+  command: sudo -iu {{project_user}} nvm alias default {{node_version}}
   changed_when: False
   # when: nvm_check_default|failed
