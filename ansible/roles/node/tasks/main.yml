@@ -14,3 +14,8 @@
   lineinfile: >-
     dest=~/.profile
     line=". ~/.nvm/nvm.sh"
+
+- name: install node version {{node_version}}
+  command: sudo -iu {{user_name}} nvm install {{node_version}}
+  register: nvm_install_result
+  changed_when: nvm_install_result.stdout.find('is already installed.') != -1
