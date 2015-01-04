@@ -2,4 +2,4 @@
 project_user: skeleton
 
 db_name: skeleton
-db_user: skeleton
+db_user: "{{project_user}}"
