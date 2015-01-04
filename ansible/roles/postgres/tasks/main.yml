@@ -1,0 +1,4 @@
+---
+- name: install postgres
+  apt: name=postgresql
+  sudo: yes
