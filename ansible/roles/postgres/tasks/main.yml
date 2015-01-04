@@ -1,4 +1,13 @@
 ---
 - name: install postgres
-  apt: name=postgresql
   sudo: yes
+  action: apt name={{item}}
+  with_items:
+    - postgresql
+    - libpq-dev
+    - python-psycopg2
+
+- name: create project database
+  sudo: yes
+  sudo_user: postgres
+  postgresql_db: name={{db_name}}

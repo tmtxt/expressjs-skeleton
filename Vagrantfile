@@ -10,5 +10,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # provision
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "ansible/main.yml"
+
+    ansible.extra_vars = {
+      db_password: "vagrant"
+    }
   end
 end
