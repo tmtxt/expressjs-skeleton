@@ -12,6 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "ansible/main.yml"
 
     ansible.extra_vars = {
+      project_dir: "/vagrant",
       db_password: "vagrant"
     }
   end
